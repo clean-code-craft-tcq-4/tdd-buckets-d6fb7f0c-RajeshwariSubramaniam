@@ -25,7 +25,10 @@ def current_ranges_and_count(current_readings):
             occurrences += current_readings.count(element)
         between_range = str(min(consecutive_samples[i])) + '-' + str(max(consecutive_samples[i]))
         ranges_count.append((between_range, str(occurrences)))
-    return ranges_count
+    string_format = ""
+    for item in ranges_count:
+        string_format += "{}, {}".format(item[0], item[1])
+    return string_format
 
 
 if __name__ == '__main__':
