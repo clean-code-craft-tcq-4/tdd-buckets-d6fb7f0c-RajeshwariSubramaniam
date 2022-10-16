@@ -3,7 +3,8 @@ import itertools
 
 def input_for_consecutive_check(current_readings):
     value = []
-    for i in range(min(current_readings), max(current_readings)+1):
+    for i in range(min(current_readings),
+                   max(current_readings) + 1):
         if i in current_readings:
             value.append(i)
             continue
@@ -12,7 +13,9 @@ def input_for_consecutive_check(current_readings):
 
 
 def get_consecutive_groups(values):
-    return [list(y) for x, y in itertools.groupby(values, lambda z: z == 0) if not x]
+    return [list(y) for x, y in
+            itertools.groupby(values, lambda z: z == 0)
+            if not x]
 
 
 def current_ranges_and_count(current_readings):
@@ -23,7 +26,10 @@ def current_ranges_and_count(current_readings):
         occurrences = 0
         for element in consecutive_samples[i]:
             occurrences += current_readings.count(element)
-        between_range = str(min(consecutive_samples[i])) + '-' + str(max(consecutive_samples[i]))
+        between_range = "-".join([
+            str(min(consecutive_samples[i])),
+            str(max(consecutive_samples[i]))]
+        )
         ranges_count.append((between_range, str(occurrences)))
     return ranges_count
 
